@@ -7,11 +7,11 @@ const mysql = require("mysql");
 // Set database paramets
 
 const db = mysql.createPool({
-  host: "localhost",
-  port: "3307",
-  user: "root",
-  password: "password",
-  database: "keskimaki",
+  host: "xxxxxx",
+  port: "xxxxxx",
+  user: "xxxxxx",
+  password: "xxxxxx",
+  database: "xxxxxx",
 });
 
 const port = 3008;
