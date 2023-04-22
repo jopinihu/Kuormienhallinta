@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 const mysql = require("mysql");
 
-// Set database paramets
+
 
 const db = mysql.createPool({
   host: "xxxxxx",
@@ -19,7 +19,7 @@ const port = 3008;
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// Get data in database
+
 app.get("/api/get/", (req, res) => {
   const sqlGet = "SELECT * FROM loads";
   db.query(sqlGet, (err, result) => {
@@ -27,7 +27,7 @@ app.get("/api/get/", (req, res) => {
   });
 });
 
-// Add data to database
+
 app.post("/api/insert/", (req, res) => {
   const { sender, recipient, product, vehicle, number, mass } = req.body;
   const sqlInsert =
@@ -43,7 +43,7 @@ app.post("/api/insert/", (req, res) => {
   );
 });
 
-// Delete row in table
+
 app.delete("/api/delete/:id", (req, res) => {
   const { id } = req.params;
   const sqlDelete = "DELETE FROM loads WHERE id = ?";
@@ -64,7 +64,7 @@ app.get("/api/get/:id", (req, res) => {
     res.send(result);
   });
 });
-// Update database.
+
 
 app.put("/api/update/:id", (req, res) => {
   const { id } = req.params;
