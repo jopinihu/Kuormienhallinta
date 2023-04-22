@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../style.css";
 import axios from "axios";
 import { useNavigate, useParams, Link } from "react-router-dom";
-// import TableJquery from "./TableJquery";
+
 
 const AddingLoad = () => {
-  // Define variable which used to place the data.
+
   const initialState = {
     sender: "",
     recipient: "",
@@ -14,14 +14,14 @@ const AddingLoad = () => {
     number: "",
     mass: "",
   };
-  // Using useState hook than we can place data in the desired variable.
+
   const [state, setState] = useState(initialState);
   const { sender, recipient, product, vehicle, number, mass } = state;
-  // Create variable which use useNavigate hook and let us return in table.
+
   const history = useNavigate();
-  // Create variable which use useParams and let us use id value.
+
   const { id } = useParams();
-  // Gettin data from SQL database and make request using axios.
+
   useEffect(() => {
     axios
       .get(`http://localhost:3008/api/get/${id}`)
@@ -30,11 +30,11 @@ const AddingLoad = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Using if else statements finding out is there enough data in user input.
+
     if (!sender || !recipient) {
       alert("Syötä lähettäjä ja vastaanottaja!");
     } else {
-      // If there isn't id, the program adds a new row to the table.
+   
       if (!id) {
         axios
           .post("http://localhost:3008/api/insert", {
@@ -56,7 +56,7 @@ const AddingLoad = () => {
             });
           })
           .catch((error) => error(error.response.data));
-        // If there is id, program edit pointed row, where id is
+       
       } else {
         axios
           .put(`http://localhost:3008/api/update/${id}`, {
