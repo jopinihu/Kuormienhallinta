@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 // import TableJquery from "./TableJquery";
 
 const Table = () => {
-  // Define the variables where the given information is placed
+  
   const [data, setData] = useState([]);
-  // When user returns to the table, it is updated.
+  
   const loadData = async () => {
     const response = await axios.get("http://localhost:3008/api/get/");
     setData(response.data);
@@ -19,7 +19,7 @@ const Table = () => {
   }, []);
 
   const deleteLoad = (id) => {
-    // Verified does user remove data.
+  
     if (window.confirm("Haluatko varmasti poistaa kuorman?")) {
       axios.delete(`http://localhost:3008/api/delete/${id}`);
       setTimeout(() => loadData(), 400);
@@ -43,7 +43,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody className="table-body">
-          {/* Use map function to getting data in sql */}
+  
           {data.map((val) => {
             return (
               <tr key={val.id} className="table-container">
